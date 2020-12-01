@@ -1,0 +1,245 @@
+SQL> SELECT A.aname, A.age
+  2  FROM ATHLETE A;
+
+ANAME                       AGE                                                                                                                                                                                                                                                                             
+-------------------- ----------                                                                                                                                                                                                                                                                             
+Luke                         28                                                                                                                                                                                                                                                                             
+Alex                         20                                                                                                                                                                                                                                                                             
+Tim                          19                                                                                                                                                                                                                                                                             
+Jamie                        22                                                                                                                                                                                                                                                                             
+Zion                         19                                                                                                                                                                                                                                                                             
+Tom                          19                                                                                                                                                                                                                                                                             
+Pedro                        24                                                                                                                                                                                                                                                                             
+Kyle                         19                                                                                                                                                                                                                                                                             
+Ryan                         26                                                                                                                                                                                                                                                                             
+Axell                        21                                                                                                                                                                                                                                                                             
+Jackson                      22                                                                                                                                                                                                                                                                             
+
+11 rows selected.
+
+SQL> 
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE, COMPETES C
+  3  WHERE C.eid='001Sk8P' AND A.aid=C.aid;
+WHERE C.eid='001Sk8P' AND A.aid=C.aid
+                          *
+ERROR at line 3:
+ORA-00904: "A"."AID": invalid identifier 
+
+
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C
+  3  WHERE C.eid='001SK8P' AND A.aid=C.aid;
+
+no rows selected
+
+SQL> SELECT A.aname
+  2  FROM ATHLETE A, COMPETES C
+  3  WHERE C.eid='001Sk8P' AND A.aid=C.aid;
+
+ANAME                                                                                                                                                                                                                                                                                                       
+--------------------                                                                                                                                                                                                                                                                                        
+Luke                                                                                                                                                                                                                                                                                                        
+Alex                                                                                                                                                                                                                                                                                                        
+Alex                                                                                                                                                                                                                                                                                                        
+
+SQL> SELECT DISTINCT E.ename
+  2  FROM EVENT E, COMPETES C, ATHLETE A
+  3  WHERE A.aname='Jackson' AND C.eid=E.eid AND A.aid=C.aid;
+
+ENAME                                                                                                                                                                                                                                                                                                       
+--------------------                                                                                                                                                                                                                                                                                        
+X Games                                                                                                                                                                                                                                                                                                     
+
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aid=C.aid AND C.eid=E.eid;
+
+ANAME                                                                                                                                                                                                                                                                                                       
+--------------------                                                                                                                                                                                                                                                                                        
+Jamie                                                                                                                                                                                                                                                                                                       
+Ryan                                                                                                                                                                                                                                                                                                        
+Axell                                                                                                                                                                                                                                                                                                       
+Luke                                                                                                                                                                                                                                                                                                        
+Jackson                                                                                                                                                                                                                                                                                                     
+Alex                                                                                                                                                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aid=C.aid AND C.eid=E.eid AND E.eid<>'XGames';
+
+ANAME                                                                                                                                                                                                                                                                                                       
+--------------------                                                                                                                                                                                                                                                                                        
+Jamie                                                                                                                                                                                                                                                                                                       
+Ryan                                                                                                                                                                                                                                                                                                        
+Axell                                                                                                                                                                                                                                                                                                       
+Luke                                                                                                                                                                                                                                                                                                        
+Jackson                                                                                                                                                                                                                                                                                                     
+Alex                                                                                                                                                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aid=C.aid
+  4  MINUS
+  5  SELECT DISTINCT A.aname
+  6  FROM ATHLETE A, COMPETES C, EVENT E
+  7  WHERE A.aid=C.aid AND C.eid=E.eid AND E.eid='DEW TOUR';
+
+ANAME                                                                                                                                                                                                                                                                                                       
+--------------------                                                                                                                                                                                                                                                                                        
+Alex                                                                                                                                                                                                                                                                                                        
+Axell                                                                                                                                                                                                                                                                                                       
+Jackson                                                                                                                                                                                                                                                                                                     
+Jamie                                                                                                                                                                                                                                                                                                       
+Luke                                                                                                                                                                                                                                                                                                        
+Ryan                                                                                                                                                                                                                                                                                                        
+
+6 rows selected.
+
+SQL> 
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aid=C.aid AND C.eid=E.eid AND E.eid='XGames'
+  4  INTERSECT
+  5  SELECT DISTINCT A.aname
+  6  FROM ATHLETE A, COMPETES C, EVENT E
+  7  WHERE A.aid=C.aid AND C.eid=E.eid AND E.eid='Dew Tour';
+
+ANAME
+---------- 
+Luke 
+
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETES A, COMPETES C, EVENT E
+  3  WHERE C.eid=E.eid AND A.aid=C.aid
+  4  MINUS
+  5  SELECT DISTINCT A.aname
+  6  FROM COMPETES C, EVENT E,ATHLETES A
+  7  WHERE C.eid<>E.eid AND A.aid=C.aid;
+FROM ATHLETES A, COMPETES C, EVENT E
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> SLECT DISTINCT A.aname
+SP2-0734: unknown command beginning "SLECT DIST..." - rest of line ignored.
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE C.eid=E.eid AND A.aid=C.aid
+  4  MINUS
+  5  SELECT DISTINCT A.aname
+  6  FROM COMPETES, EVENT E, ATHLETE A
+  7  
+SQL> SELECT DISTINCT A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE C.eid=E.eid AND A.aid=C.aid
+  4  MINUS
+  5  SELECT DISTINCT A.aname
+  6  FROM COMPETES C, EVENT E, ATHLETE A
+  7  WHERE C.eid<>E.eid AND A.aid=C.aid;
+
+ANAME 
+---------- 
+Luke 
+
+SQL> SELECT AVG(A.age),MIN(A.age)
+  2  FROM ATHLETE A;
+
+AVG(A.AGE) MIN(A.AGE)                                                                                                                                                                                                                                                                                       
+---------- ----------                                                                                                                                                                                                                                                                                       
+21.7272727         19                                                                                                                                                                                                                                                                                       
+
+SQL> SELECT MAX(A.age)
+  2  FROM ATHLETE A;
+
+MAX(A.AGE)                                                                                                                                                                                                                                                                                                  
+----------                                                                                                                                                                                                                                                                                                  
+        28                                                                                                                                                                                                                                                                                                  
+
+SQL> SELECT A.aname, C.sport, C.position
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE C.eid=E.eid AND A.aid=C.aid AND Ename='XGames';
+
+no rows selected
+
+SQL> SELECT A.aname,C.sport,C.position
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aid=C.aid AND C.eid=E.eid AND ename='XGames';
+
+no rows selected
+
+SQL> SELECT A.aname,C.sport,C.position
+  2  FROM ATHLETE A
+  3  JOIN COMPETES C ON A.aID=C.aID
+  4  JOIN EVENT E ON E.eID=C.eID
+  5  WHERE E.eName='X Games';
+
+ANAME                SPORT                  POSITION                                                                                                                                                                                                                                                        
+-------------------- -------------------- ----------                                                                                                                                                                                                                                                        
+Luke                 Sk8 Street                   12                                                                                                                                                                                                                                                        
+Luke                 Moto                          1                                                                                                                                                                                                                                                        
+Luke                 Sk8 Park                      8                                                                                                                                                                                                                                                        
+Alex                 Sk8 Park                      1                                                                                                                                                                                                                                                        
+Alex                 Sk8 Park                      1                                                                                                                                                                                                                                                        
+Jamie                Sk8 Street                    6                                                                                                                                                                                                                                                        
+Ryan                 Moto High Air                 3                                                                                                                                                                                                                                                        
+Axell                Moto High Air                 1                                                                                                                                                                                                                                                        
+Jackson              Moto Freestyle                2                                                                                                                                                                                                                                                        
+
+9 rows selected.
+
+SQL> SELECT A.aname, C.sport
+  2  FROM ATHLETE A, COMPETES C
+  3  WHERE A.aname LIKE'%A%' AND A.aID=C.aID;
+
+ANAME                SPORT                                                                                                                                                                                                                                                                                  
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Alex                 Sk8 Park                                                                                                                                                                                                                                                                               
+Alex                 Sk8 Park                                                                                                                                                                                                                                                                               
+Axell                Moto High Air                                                                                                                                                                                                                                                                          
+
+SQL> SELECT E.model, E.brand
+  2  FROM EQUIPMENT E, ATHLETE A
+  3  WHERE E.aID=A.aID AND A.aname='Luke';
+
+MODEL                BRAND                                                                                                                                                                                                                                                                                  
+-------------------- --------------------                                                                                                                                                                                                                                                                   
+Shoes                Adidas                                                                                                                                                                                                                                                                                 
+Gear                 Fast Track                                                                                                                                                                                                                                                                             
+Bike 125             KTM                                                                                                                                                                                                                                                                                    
+Board                PlanB                                                                                                                                                                                                                                                                                  
+
+SQL> SELECT A.aID, A,aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aID=C.aID AND C.eID=E.eID AND C.SPORT LIKE'%MOTO%'
+  4  ;
+SELECT A.aID, A,aname
+              *
+ERROR at line 1:
+ORA-00904: "A": invalid identifier 
+
+
+SQL> SELECT A.aID, A.aname
+  2  FROM ATHLETE A, COMPETES C, EVENT E
+  3  WHERE A.aID=C.aID AND C.eID=E.eID AND C.sport LIKE '%MOTO%';
+
+no rows selected
+
+SQL> SELECT A.aid,A.aname
+  2  FROM ATHLETE A
+  3  JOIN COMPETES C ON A.aid=C.aid
+  4  WHERE C.sport LIKE '%Moto%';
+
+       AID ANAME                                                                                                                                                                                                                                                                                            
+---------- --------------------                                                                                                                                                                                                                                                                             
+        10 Luke                                                                                                                                                                                                                                                                                             
+        90 Ryan                                                                                                                                                                                                                                                                                             
+       100 Axell                                                                                                                                                                                                                                                                                            
+       110 Jackson                                                                                                                                                                                                                                                                                          
+
+SQL> spool off
