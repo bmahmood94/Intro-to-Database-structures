@@ -1,0 +1,526 @@
+SQL> DELETE
+  2  FROM RECORDED_BY
+  3  WHERE SONGID=213;
+
+0 rows deleted.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> DELETE
+  2  
+SQL> 
+SQL> 
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> INSERT
+  2  INTO ARTIST
+  3  VALUES('156','SOUNDGARDEN','CHRIS','CORNELL','2017','53');
+
+1 row created.
+
+SQL> SELECT * FROM ARTIST;
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       101 Elvis                Elvis                Presley                    
+      1977         41                                                           
+                                                                                
+       102 Mac Miller           Mac                  Miller                     
+      2018         26                                                           
+                                                                                
+       103 Prince               Prince Rogers        Nelson                     
+      2016         57                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       104 Linkin Park          Chester              Bennington                 
+      2017         41                                                           
+                                                                                
+       105 Cranberries          Dolores              O'Riordan                  
+      2018         46                                                           
+                                                                                
+       106 Nirvana              Kurt                 Cobain                     
+      1994         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       107 2Pac                 Tupac                Shakur                     
+      1996         25                                                           
+                                                                                
+       108 Amy Winehouse        Amy                  Winehouse                  
+      2011         27                                                           
+                                                                                
+       109 Janis Joplin         Janis                Joplin                     
+      1970         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       110 The Doors            Jim                  Morrison                   
+      1971         27                                                           
+                                                                                
+       111 Jimi Hendrix         Jimi                 Hendrix                    
+      1970         27                                                           
+                                                                                
+       112 Queen                Freddy               Mercury                    
+      1991         45                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       113 Johnny Cash          Johnny               Cash                       
+      2003         71                                                           
+                                                                                
+       114 Foo Fighters         Dave                 Grohl                      
+                                                                                
+                                                                                
+       115 Arctic Monkeys       Alex                 Turner                     
+                                                                                
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       116 Blind Melon          Richard Shannon      Hoon                       
+      1995         28                                                           
+                                                                                
+       117 Sublime              Bradley              Nowell                     
+      1996         28                                                           
+                                                                                
+       118 Frank Sinatra        Frank                Sinatra                    
+      1998         82                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       119 Notorious B.I.G.     Christopher George   Latore Wallace             
+      1997         24                                                           
+                                                                                
+       120 Aviccii              Tim                  Bergling                   
+      2018         28                                                           
+                                                                                
+       121 Erma Franklin        Erma                 Franklin                   
+      2001         64                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       156 SOUNDGARDEN          CHRIS                CORNELL                    
+      2017         53                                                           
+                                                                                
+
+22 rows selected.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM ARTIST;
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       101 Elvis                Elvis                Presley                    
+      1977         41                                                           
+                                                                                
+       102 Mac Miller           Mac                  Miller                     
+      2018         26                                                           
+                                                                                
+       103 Prince               Prince Rogers        Nelson                     
+      2016         57                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       104 Linkin Park          Chester              Bennington                 
+      2017         41                                                           
+                                                                                
+       105 Cranberries          Dolores              O'Riordan                  
+      2018         46                                                           
+                                                                                
+       106 Nirvana              Kurt                 Cobain                     
+      1994         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       107 2Pac                 Tupac                Shakur                     
+      1996         25                                                           
+                                                                                
+       108 Amy Winehouse        Amy                  Winehouse                  
+      2011         27                                                           
+                                                                                
+       109 Janis Joplin         Janis                Joplin                     
+      1970         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       110 The Doors            Jim                  Morrison                   
+      1971         27                                                           
+                                                                                
+       111 Jimi Hendrix         Jimi                 Hendrix                    
+      1970         27                                                           
+                                                                                
+       112 Queen                Freddy               Mercury                    
+      1991         45                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       113 Johnny Cash          Johnny               Cash                       
+      2003         71                                                           
+                                                                                
+       114 Foo Fighters         Dave                 Grohl                      
+                                                                                
+                                                                                
+       115 Arctic Monkeys       Alex                 Turner                     
+                                                                                
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       116 Blind Melon          Richard Shannon      Hoon                       
+      1995         28                                                           
+                                                                                
+       117 Sublime              Bradley              Nowell                     
+      1996         28                                                           
+                                                                                
+       118 Frank Sinatra        Frank                Sinatra                    
+      1998         82                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       119 Notorious B.I.G.     Christopher George   Latore Wallace             
+      1997         24                                                           
+                                                                                
+       120 Aviccii              Tim                  Bergling                   
+      2018         28                                                           
+                                                                                
+       121 Erma Franklin        Erma                 Franklin                   
+      2001         64                                                           
+                                                                                
+
+21 rows selected.
+
+SQL> SELECT * FROM ARTIST;
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       101 Elvis                Elvis                Presley                    
+      1977         41                                                           
+                                                                                
+       102 Mac Miller           Mac                  Miller                     
+      2018         26                                                           
+                                                                                
+       103 Prince               Prince Rogers        Nelson                     
+      2016         57                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       104 Linkin Park          Chester              Bennington                 
+      2017         41                                                           
+                                                                                
+       105 Cranberries          Dolores              O'Riordan                  
+      2018         46                                                           
+                                                                                
+       106 Nirvana              Kurt                 Cobain                     
+      1994         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       107 2Pac                 Tupac                Shakur                     
+      1996         25                                                           
+                                                                                
+       108 Amy Winehouse        Amy                  Winehouse                  
+      2011         27                                                           
+                                                                                
+       109 Janis Joplin         Janis                Joplin                     
+      1970         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       110 The Doors            Jim                  Morrison                   
+      1971         27                                                           
+                                                                                
+       111 Jimi Hendrix         Jimi                 Hendrix                    
+      1970         27                                                           
+                                                                                
+       112 Queen                Freddy               Mercury                    
+      1991         45                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       113 Johnny Cash          Johnny               Cash                       
+      2003         71                                                           
+                                                                                
+       114 Foo Fighters         Dave                 Grohl                      
+                                                                                
+                                                                                
+       115 Arctic Monkeys       Alex                 Turner                     
+                                                                                
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       116 Blind Melon          Richard Shannon      Hoon                       
+      1995         28                                                           
+                                                                                
+       117 Sublime              Bradley              Nowell                     
+      1996         28                                                           
+                                                                                
+       118 Frank Sinatra        Frank                Sinatra                    
+      1998         82                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       119 Notorious B.I.G.     Christopher George   Latore Wallace             
+      1997         24                                                           
+                                                                                
+       120 Aviccii              Tim                  Bergling                   
+      2018         28                                                           
+                                                                                
+       121 Erma Franklin        Erma                 Franklin                   
+      2001         64                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       155 ROLLING STONES       BRIAN                JONES                      
+      1969         27                                                           
+                                                                                
+
+22 rows selected.
+
+SQL> INSERT
+  2  INTO ARTIST
+  3  VALUES ('160','INXS','MICHAEL','HUTCHENCE','1997','37');
+
+1 row created.
+
+SQL> INSERT INTO sONG
+  2  VALUES('275','BACK IN BLACK','ROCK');
+INSERT INTO sONG
+            *
+ERROR at line 1:
+ORA-00060: deadlock detected while waiting for resource 
+
+
+SQL> 
+SQL> '
+SP2-0042: unknown command "'" - rest of line ignored.
+SQL> 
+SQL> 
+SQL> INSERT INTO SONG
+  2  VALUES('275','BACK IN BLACK','ROCK');
+
+1 row created.
+
+SQL> SELECT * FROM SONG;
+
+    SONGID TITLE                          GENRE                                 
+---------- ------------------------------ --------------------                  
+       201 Purple Rain                    Rock                                  
+       202 Numb                           Rock                                  
+       203 Linger                         Pop                                   
+       204 Smells Like Teen Spirit        Grunge                                
+       205 California Love                Hip Hop                               
+       206 Red House                      Blues                                 
+       207 What I Got                     Reggae Rock                           
+       208 New York, New York             Vocal Jazz                            
+       209 Light My Fire                  Rock                                  
+       210 Change                         Rock                                  
+       211 Ring of Fire                   Country                               
+
+    SONGID TITLE                          GENRE                                 
+---------- ------------------------------ --------------------                  
+       212 When You're Gone               Pop                                   
+       213 Controversy                    Pop                                   
+       214 Big Poppa                      Gangsta Rap                           
+       215 Levels                         House                                 
+       216 You Know I'm No Good           Blues                                 
+       217 Piece of MY Heart              Blues                                 
+       218 Do I Wanna Know?               Rock                                  
+       219 Diablo                         Hip Hop                               
+       220 My Way                         Vocal Jazz                            
+       221 Wake Me Up                     Folktronica                           
+       222 Best of You                    Rock                                  
+
+    SONGID TITLE                          GENRE                                 
+---------- ------------------------------ --------------------                  
+       275 BACK IN BLACK                  ROCK                                  
+
+23 rows selected.
+
+SQL> SELECT * FROM ARTIST;
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       101 Elvis                Elvis                Presley                    
+      1977         41                                                           
+                                                                                
+       102 Mac Miller           Mac                  Miller                     
+      2018         26                                                           
+                                                                                
+       103 Prince               Prince Rogers        Nelson                     
+      2016         57                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       104 Linkin Park          Chester              Bennington                 
+      2017         41                                                           
+                                                                                
+       105 Cranberries          Dolores              O'Riordan                  
+      2018         46                                                           
+                                                                                
+       106 Nirvana              Kurt                 Cobain                     
+      1994         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       107 2Pac                 Tupac                Shakur                     
+      1996         25                                                           
+                                                                                
+       108 Amy Winehouse        Amy                  Winehouse                  
+      2011         27                                                           
+                                                                                
+       109 Janis Joplin         Janis                Joplin                     
+      1970         27                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       110 The Doors            Jim                  Morrison                   
+      1971         27                                                           
+                                                                                
+       111 Jimi Hendrix         Jimi                 Hendrix                    
+      1970         27                                                           
+                                                                                
+       112 Queen                Freddy               Mercury                    
+      1991         45                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       113 Johnny Cash          Johnny               Cash                       
+      2003         71                                                           
+                                                                                
+       114 Foo Fighters         Dave                 Grohl                      
+                                                                                
+                                                                                
+       115 Arctic Monkeys       Alex                 Turner                     
+                                                                                
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       116 Blind Melon          Richard Shannon      Hoon                       
+      1995         28                                                           
+                                                                                
+       117 Sublime              Bradley              Nowell                     
+      1996         28                                                           
+                                                                                
+       118 Frank Sinatra        Frank                Sinatra                    
+      1998         82                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       119 Notorious B.I.G.     Christopher George   Latore Wallace             
+      1997         24                                                           
+                                                                                
+       120 Aviccii              Tim                  Bergling                   
+      2018         28                                                           
+                                                                                
+       121 Erma Franklin        Erma                 Franklin                   
+      2001         64                                                           
+                                                                                
+
+  ARTISTID NAME                 FNAME                LNAME                      
+---------- -------------------- -------------------- --------------------       
+   LEADYOD    LEADAOD                                                           
+---------- ----------                                                           
+       155 ROLLING STONES       BRIAN                JONES                      
+      1969         27                                                           
+                                                                                
+       160 INXS                 MICHAEL              HUTCHENCE                  
+      1997         37                                                           
+                                                                                
+
+23 rows selected.
+
+SQL> SPOOL OFF;
