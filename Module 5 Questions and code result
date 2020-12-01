@@ -1,0 +1,185 @@
+1. Find all athletes with a ranking of 1
+SELECT A.aName
+FROM Athlete A
+WHERE A.Ranking = 1;
+ANAME
+--------------------
+Luke
+Alex
+Kyle
+Jackson
+
+2. Find the names and ages of all the athletes
+SELECT A.aname, A.age
+ 2 FROM ATHLETE A;
+ANAME AGE
+-------------------- ----------
+Luke 28
+Alex 20
+Tim 19
+Jamie 22
+Zion 19
+Tom 19
+Pedro 24
+Kyle 19
+Ryan 26
+Axell 21
+Jackson 22
+11 ows selected.
+
+3. Find the names of athletes who have competed in event ‘001Sk8P’
+SELECT A.aname
+ 2 FROM ATHLETE A, COMPETES C
+ 3 WHERE C.eid='001Sk8P' AND A.aid=C.aid;
+ANAME
+--------------------
+Luke
+Alex
+Alex 
+
+4. Find all the event names Jackson competed in
+SELECT distinct E.ename
+FROM Event E, Competes C, Athlete A
+WHERE A.aname=’Jackson’ AND C.eid=E.eid AND A.aid=C.aid;
+ENAME
+--------------------
+X Games
+
+5. Find the names of athletes who have competed in at least one event
+SELECT DISTINCE A.aname
+FROM Athlete A, Competes C, Event E
+WHERE A.aid=C.aid AND C.eid=E.eid;
+ANAME
+--------------------
+Jamie
+Ryan
+Axell
+Luke
+Jackson
+Alex
+
+6. Find the names of athletes who have competed in at least one event but did not compete at ‘X
+Games’
+
+SQL> SELECT DISTINCT A.aname
+ 2 FROM ATHLETE A, COMPETES C, EVENT E
+ 3 WHERE A.aid=C.aid
+ 4 MINUS
+ 5 SELECT DISTINCT A.aname
+ 6 FROM ATHLETE A, COMPETES C, EVENT E
+ 7 WHERE A.aid=C.aid AND C.eid=E.eid AND E.eid='DEW TOUR';
+ANAME
+--------------------
+Alex
+Axell
+Jackson
+Jamie
+Luke
+Ryan
+6 rows selected.
+
+7. Find the names of athletes who have not competed at ‘Dew Tour’ (This would also include all
+the athletes who have not competed at any event) 
+SELECT DISTINCT A.aname
+FROM Athlete A, Competes C, Event E
+WHERE A.aid=C.aid
+MINUS
+SELECT DISTINCT A.aname
+FROM Athlete A, Competes C, Event E
+WHERE A.aid=C.aid AND C.eid=E.eid and E.eid=’DEW TOUR’
+ANAME
+--------------------
+Alex
+Axell
+Jackson
+Jamie
+Luke
+Ryan
+6 rows selected.
+
+8. Find the names of athletes who have competed at both ‘X Games’ and ‘Dew Tour’
+SELECT DISTINCT A.aname
+ 2 FROM ATHLETE A, COMPETES C, EVENT E
+ 3 WHERE C.eid=E.eid AND A.aid=C.aid
+ 4 MINUS
+ 5 SELECT DISTINCT A.aname
+ 6 FROM COMPETES C, EVENT E, ATHLETE A
+ 7 WHERE C.eid<>E.eid AND A.aid=C.aid;
+ANAME
+----------
+Luke
+
+9. Find the names of athletes who have competed at all 5 events
+SELECT DISTINCT A.aname
+FROM ATHLETES A, Competes C, Event E
+WHERE C.eid=E.eid AND A.aid=C.aid
+MINUS
+SELECT DISTINCT A.aname
+FROM Competes C, Event E, ATHLETES A
+WHERE C.eid<>E.eid AND A.aid=C.aid
+ANAME 
+----------
+Luke
+
+10. Find the average age and the youngest age of the athletes
+SELECT AVG(A.age),MIN(A.age)
+FROM ATHLETES A;
+AVG(A.age) MIN(A.age)
+-------------------------------------
+21.72 19
+
+11. Find the name of the oldest athlete
+SELECT MAX(A.AGE)
+FROM ATHLETES A;
+MAX(A.age)
+----------------
+28
+
+12. Find the names, sports, and positions of the athletes who competed in X Games
+SELECT A.ANAME, C.SPORT,C.POSTION
+FROM ATHLETES A, Competes C, Event E
+WHERE C.eid=E.eid AND A.aid=C.aid AND Ename=’xgames’
+ANAME SPORT POSITION
+-------------------- -------------------- ----------
+Luke Sk8 Street 12
+Luke Moto 1
+Luke Sk8 Park 8
+Alex Sk8 Park 1
+Alex Sk8 Park 1
+Jamie Sk8 Street 6
+Ryan Moto High Air 3
+Axell Moto High Air 1
+Jackson Moto Freestyle 2
+9 rows selected.
+
+13. Find the name and sports of athletes whose name begins with the letter ‘A’
+
+SELECT A.ANAME,C.SPORT 
+FROM ATHLETE A, COMPETES C
+WHERER A.ANAME LIKE’A%’ AND A.AID=C.CAID;
+ANAME SPORT
+-------------------- --------------------
+Alex Sk8 Park
+Alex Sk8 Park
+Axell Moto High Air
+
+14. Find the model and brand of all the equipment used by Luke (AID 10)
+
+SELECT E.MODEL, E.BRAND
+FROM EQUIPMENT E, ATHLETE A
+WHERE E.AID =A.AID AND A.ANAME=’LUKE’
+15. Find the athlete ID and name of any athletes who competed in sports that include “moto’ in
+the name of the sport.
+SELECT A.AID,A.ANAME
+FROM ATHLETE A, COMPETES C, EVENT E
+WHERE A.AID=C.AID AND C.EID=E.EID AND C.SPORT LIKE ‘%MOTO%’S
+ SELECT A.aid,A.aname
+ 2 FROM ATHLETE A
+ 3 JOIN COMPETES C ON A.aid=C.aid
+ 4 WHERE C.sport LIKE '%Moto%';
+ AID ANAME
+---------- --------------------
+ 10 Luke
+ 90 Ryan
+ 100 Axell
+ 110 Jackson 
