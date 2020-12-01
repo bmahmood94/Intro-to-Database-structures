@@ -1,0 +1,30 @@
+1.	What happens after step 2 and why? (Continue to step 3 and 4 and then answer) 
+
+Answer): After step 2 T2 is waiting to proceed with the command until T1 commits before releasing the exclusive lock because it modified data by deleting it. Once T1 commits T2 will delete.
+
+2.	 What happens after step 3 and 4 and why? 
+
+Answer): T1 commits which at this point releases the exclusive lock therefore allowing T2 to finish its operation. In lines 5&6 two data inputs were inputted not causing issues since they are different values.
+
+3.	 What happens after step 7 and step 8 and why? 
+
+Answer): In step 7&8 both terminals executed similar commands which had no effect but there was a write command that was writing into the same table but different values and then a read command was given but no locks are set because both were inputting different values. In step 9, a rollback occurs reverting all information to its original value for T2, so all input/modifying will seem as if it didn’t happen.
+
+4.	 What happens after step 12 and why? 
+
+Answer): T1 was working on the insert commands while T2 was conducting insert commands of its own; they were accessing the same table but inputting different values, so with this being said T2 couldn’t see what T1  writes until T1 committed. Therefore, Rolling Stone wouldn’t be inserted/appear in T2 until T1 committed.
+ 
+5.	 Explain the results (wait to see) of steps 13 to 16 and why? 
+
+Answer): In lines 13 & 14 we create a row in song (songID=213,160), at line 15 T1 tries to add the same songID (160) as T2, which also T2 has not yet committed, so modifying the data wont occur until T2 commits. At this point T1 is put on wait and vice versa for T2 because its still waiting for T1 to commit. After line 16, both terminals have conflicts.
+
+6.	 What happens after step 17 and why?
+
+Answer):After step 17, the rollback command is used which will discard the last data that was trying to be processed and makes all data to its former/original state before any changes occurred then T2 is released from its wait allowing a row to be created. Lines 18-21 the read command is done which has no effect on any terminals.
+
+7.	 What happens after step 21 and why? 
+
+Answer): After conducting a few entries and neither terminal has committed yet. Due to T1 doing a rollback this allowed T2 to create a row but in step 22 T2 will commit; the row created wont be visible before step 22 because T2 didn’t commit. If and when T1 rollback it will revert all entries to original state  and T2 needs to commit in order to see both entries that were created.
+
+8.	 What happens after step 26 and why?
+Answer): Only reading is occurring meaning no waits or conflicts, at this point the charts are updated and displaying same information on both terminals.
